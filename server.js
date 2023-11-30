@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 const OPENAI_API_URL = 'https://api.openai.com/v1/engines/davinci/completions';
-const API_KEY = 'your-openai-api-key'; // Replace with your actual OpenAI API key
+const API_KEY = process.env.OPENAI_API_KEY; // Use the environment variable
 
 app.post('/get-critique', async (req, res) => {
   const { frameText } = req.body; // The text from the selected Figma frame
