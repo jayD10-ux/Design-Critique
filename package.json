@@ -1,0 +1,12 @@
+{
+  "name": "your-app-name",
+  "version": "1.0.0",
+  "description": "A Figma plugin backend",
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  // ... other settings and dependencies
+}

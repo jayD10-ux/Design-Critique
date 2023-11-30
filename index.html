@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Critique Plugin</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Design Critique Plugin</h1>
+        <p>Welcome to the Design Critique Plugin! Select a frame and click 'Critique' to get started.</p>
+        <button id="critiqueBtn">Critique Design</button>
+        <div id="selectionStatus"></div>
+        <div id="feedback"></div>
+    </div>
+    <script src="code.js"></script>
+    <script>
+        // Event listener for the 'Critique Design' button
+        document.getElementById('critiqueBtn').addEventListener('click', function() {
+            // Post a message to the plugin code
+            parent.postMessage({ pluginMessage: { type: 'critique-design' } }, '*');
+        });
+
+        // Handler for messages received from the plugin code
+        onmessage = (event) => {
+            const message = event.data.pluginMessage;
+
+            // Display critique results
+            if (message && message.type === 'critique-result') {
+                document.getElementById('feedback').innerText = message.content;
+            }
+
+            // Display selection status and frame name
+            if (message && message.type === 'selection') {
+                const statusText = message.status;
+                if (message.frameName) {
+                    document.getElementById('selectionStatus').innerText = statusText + ' - ' + message.frameName;
+                } else {
+                    document.getElementById('selectionStatus').innerText = statusText;
+                }
+            }
+        };
+    </script>
+</body>
+</html>
