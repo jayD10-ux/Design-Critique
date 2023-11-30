@@ -1,5 +1,5 @@
 {
-  "name": "your-app-name",
+  "name": "DesignCritique",
   "version": "1.0.0",
   "description": "A Figma plugin backend",
   "engines": {
@@ -7,6 +7,5 @@
   },
   "scripts": {
     "start": "node server.js"
-  },
-  // ... other settings and dependencies
+  }
 }
